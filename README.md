@@ -2,6 +2,10 @@
 
 ## Web aplication build in Angular
 Link: [https://tonimitrevski.github.io/calculator/](https://tonimitrevski.github.io/calculator/)
+
+#### Implementation path of Calculator Module
+src/components/calculator
+
 ### Coding standards
 https://angular.io/guide/styleguide
 
