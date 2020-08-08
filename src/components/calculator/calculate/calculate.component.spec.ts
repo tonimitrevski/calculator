@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalculateComponent } from './calculate.component';
+import {CalculationSubscriptionService} from '../shared/services/calculation-subscription/calculation-subscription.service';
 
 describe('CalculatorComponent', () => {
   let component: CalculateComponent;
@@ -8,7 +9,8 @@ describe('CalculatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalculateComponent ]
+      declarations: [ CalculateComponent ],
+      providers: [CalculationSubscriptionService]
     })
     .compileComponents();
   }));
