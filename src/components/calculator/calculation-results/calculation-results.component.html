@@ -1,0 +1,9 @@
+<div class="calculations">
+    <h3>Your latest 5 calculations</h3>
+    <div class="calculations__cont">
+        <p *ngFor="let calculation of listResults" class="calculations__cont__row">
+            <span>{{calculation.expression}}</span>
+            <span><small>=</small>{{calculation.result}}</span>
+        </p>
+    </div>
+</div>

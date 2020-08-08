@@ -1,18 +1,22 @@
 import { Component } from '@angular/core';
 import {CalculateService} from './shared/calculate/calculate.service';
 import {AddExpressionService} from './shared/add-expression/add-expression.service';
+import {CalculationSubscriptionService} from '../shared/services/calculation-subscription/calculation-subscription.service';
+import {CalculationResultObjectValue} from '../shared/object-values/calculation-result.object-value';
 
 @Component({
   selector: 'app-calculator',
-  templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.scss']
+  templateUrl: './calculate.component.html',
+  styleUrls: ['./calculate.component.scss']
 })
-export class CalculatorComponent {
+export class CalculateComponent {
   expression = '';
   private lastChar: string;
   private readonly removeExpressionChar = 'C';
   private readonly calculateExpressionChar = '=';
   private restartExpression = false;
+
+  constructor(protected calculationSubscriptionService: CalculationSubscriptionService) {}
 
   onClick(e: HTMLElement): void {
     const classList: DOMTokenList = e.classList;
@@ -34,7 +38,9 @@ export class CalculatorComponent {
     }
 
     if (currentChar === this.calculateExpressionChar) {
-      this.expression = CalculateService.execute(this.expression);
+      const result = CalculateService.execute(this.expression);
+      this.calculationSubscriptionService.changeSubject.next(new CalculationResultObjectValue(this.expression, result));
+      this.expression = result;
       this.restartExpression = true;
       return;
     }
