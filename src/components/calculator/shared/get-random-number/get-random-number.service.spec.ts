@@ -6,7 +6,9 @@ describe('GetRandomNumberService', () => {
   let service: GetRandomNumberService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [GetRandomNumberService]
+    });
     service = TestBed.inject(GetRandomNumberService);
   });
 
