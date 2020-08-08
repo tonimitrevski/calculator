@@ -1,7 +1,7 @@
 
 <div class="calculator">
-    <div class="calculator__input" id="input"></div>
-    <div class="calculator__buttons">
+    <div class="calculator__input">{{expression}}</div>
+    <div class="calculator__buttons" (click)="onClick($event.target)">
       <div class="calculator__buttons__operators">
         <div class="calculator_btn calculator__buttons__operators__btn">+</div>
         <div class="calculator_btn calculator__buttons__operators__btn">-</div>
@@ -25,7 +25,7 @@
             <div class="calculator_btn calculator__buttons__main__numbers__nb">1</div>
             <div class="calculator_btn calculator__buttons__main__numbers__nb">2</div>
             <div class="calculator_btn calculator__buttons__main__numbers__nb">3</div>
-            <div class="calculator_btn calculator__buttons__main__numbers__nb random">Rand</div>
+            <div class="calculator__buttons__main__numbers__nb random">Rand</div>
             <div class="calculator_btn calculator__buttons__main__numbers__nb">0</div>
             <div class="calculator_btn calculator__buttons__main__numbers__nb" id="clear">C</div>
         </div>
