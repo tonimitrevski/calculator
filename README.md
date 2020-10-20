@@ -27,4 +27,15 @@ npm run build
 npm run test
 ```
 #### CI/CD
-Github Action
+ - Github Action
+ 
+#### Run with Docker
+ - Build
+ ```
+    docker build -t calculator .
+ ``` 
+ - Run
+ ```
+    docker run -it --rm --name calculator-container -p 5555:80 calculator
+ ```
+<p>And if you now enter http://localhost:5555/ you’ll see that it’s running!</p>
