@@ -28,6 +28,7 @@ npm run test
 ```
 #### CI/CD
  - Github Action
+ - Jenkins
  
 #### Run with Docker
  - Build
