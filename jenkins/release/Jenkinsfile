@@ -24,12 +24,12 @@ pipeline {
         sh 'ls -a'
         sh 'pwd'
 
-/*        checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
+        checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
 
 
         checkoutBranch = checkoutBranchUtils.handle(params.Release)
 
-				checkoutBranch(repositoryUrl, checkoutBranch)*/
+				echo checkoutBranch
 			}
 		}
 	}
