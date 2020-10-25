@@ -1,0 +1,27 @@
+String repositoryUrl = 'https://github.com/tonimitrevski/calculator'
+
+def checkoutBranch(String repoUrl, String branch) {
+	checkout scm: [
+			$class: 'GitSCM',
+			branches: [[name: branch]],
+			doGenerateSubmoduleConfigurations: false,
+			submoduleCfg: [],
+			userRemoteConfigs: [[url: repoUrl]]
+	]
+}
+
+pipeline {
+	agent any
+	parameters {
+		string(name: 'Branch', description: 'Chose branch version')
+		choice(name: 'Release', choices: ['New', 'Bugfix'], description: 'Pick something')
+	}
+	stages {
+		stage('Checkout') {
+      def checkoutBranch = load "jenkins/src/CheckoutBranch.groovy"
+			steps {
+				checkoutBranch(repositoryUrl, checkoutBranch.handle(params.Release))
+			}
+		}
+	}
+}
