@@ -19,13 +19,17 @@ pipeline {
 	stages {
 		stage('Checkout') {
 			steps {
-        node {
-          checkout scm
-          def checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
-          def checkoutBranch = checkoutBranchUtils.handle(params.Release)
-          checkoutBranch(repositoryUrl, checkoutBranch)
-        }
+        checkout scm
+        checkoutBranch(repositoryUrl, 'master')
+        sh 'ls -a'
+        sh 'pwd'
 
+/*        checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
+
+
+        checkoutBranch = checkoutBranchUtils.handle(params.Release)
+
+				checkoutBranch(repositoryUrl, checkoutBranch)*/
 			}
 		}
 	}
