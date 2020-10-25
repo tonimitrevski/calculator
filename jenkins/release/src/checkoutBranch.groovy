@@ -1,4 +1,4 @@
-static String handle(String param) {
+String handle(String param) {
   if (param == 'New') {
     return 'develop'
   }
