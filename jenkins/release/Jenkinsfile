@@ -21,18 +21,15 @@ pipeline {
 	}
 	stages {
 		stage('Checkout') {
-			steps {
-        checkout scm
-        checkoutBranch(repositoryUrl, 'master')
-        script {
-          sh 'ls -a'
-          sh 'dir'
-          checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
-          checkoutBranchResult = checkoutBranchUtils.handle(params.Release)
-        }
+      checkout scm
+      checkoutBranch(repositoryUrl, 'master')
+      sh 'ls -a'
+      sh 'pwd'
+      echo params.Release
 
-				echo checkoutBranchResult
-			}
+      checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
+      checkoutBranchResult = checkoutBranchUtils.handle(params.Release)
+			echo checkoutBranchResult
 		}
 	}
 }
