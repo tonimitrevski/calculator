@@ -26,11 +26,9 @@ pipeline {
         checkoutBranch(repositoryUrl, 'master')
         script {
           checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
-
-          git fetch
           checkoutBranchResult = checkoutBranchUtils.handle(params.Release)
 
-          git branch -a
+          sh 'git checkout'
         }
 			}
 		}
