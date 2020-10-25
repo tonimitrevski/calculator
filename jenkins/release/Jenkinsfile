@@ -10,6 +10,9 @@ def checkoutBranch(String repoUrl, String branch) {
 	]
 }
 
+def checkoutBranchUtils
+def checkoutBranch
+
 pipeline {
 	agent any
 	parameters {
@@ -21,12 +24,8 @@ pipeline {
 			steps {
         checkout scm
         checkoutBranch(repositoryUrl, 'master')
-        sh 'ls -a'
-        sh 'pwd'
 
         checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
-
-
         checkoutBranch = checkoutBranchUtils.handle(params.Release)
 
 				echo checkoutBranch
