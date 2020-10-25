@@ -24,9 +24,10 @@ pipeline {
 			steps {
         checkout scm
         checkoutBranch(repositoryUrl, 'master')
-
-        checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
-        checkoutBranchResult = checkoutBranchUtils.handle(params.Release)
+        script {
+          checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
+          checkoutBranchResult = checkoutBranchUtils.handle(params.Release)
+        }
 
 				echo checkoutBranchResult
 			}
