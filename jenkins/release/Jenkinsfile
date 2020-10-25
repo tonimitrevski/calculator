@@ -11,7 +11,7 @@ def checkoutBranch(String repoUrl, String branch) {
 }
 
 def checkoutBranchUtils
-def checkoutBranch
+def checkoutBranchResult
 
 pipeline {
 	agent any
@@ -26,9 +26,9 @@ pipeline {
         checkoutBranch(repositoryUrl, 'master')
 
         checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
-        checkoutBranch = checkoutBranchUtils.handle(params.Release)
+        checkoutBranchResult = checkoutBranchUtils.handle(params.Release)
 
-				echo checkoutBranch
+				echo checkoutBranchResult
 			}
 		}
 	}
