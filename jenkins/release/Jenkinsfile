@@ -33,6 +33,7 @@ pipeline {
           checkoutBranchResult = checkoutBranchUtils.handle(params.Release)
         }
         checkoutBranch(repositoryUrl, checkoutBranchResult)
+        exec('git fetch')
         exec('git branch -a')
 			}
 		}
