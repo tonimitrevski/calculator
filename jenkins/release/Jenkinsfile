@@ -10,6 +10,10 @@ def checkoutBranch(String repoUrl, String branch) {
 	]
 }
 
+String exec(String command) {
+  return sh(script: "$command", returnStdout: true)
+}
+
 def checkoutBranchUtils
 def checkoutBranchResult
 
@@ -27,9 +31,8 @@ pipeline {
         script {
           checkoutBranchUtils = load "jenkins/release/src/checkoutBranch.groovy"
           checkoutBranchResult = checkoutBranchUtils.handle(params.Release)
-
-          sh 'git checkout'
         }
+        exec('git checkout')
 			}
 		}
 	}
