@@ -18,8 +18,9 @@ pipeline {
 	}
 	stages {
 		stage('Checkout') {
-      def checkoutBranch = load "$path/jenkins/src/CheckoutBranch.groovy"
 			steps {
+        def checkoutBranch = load "$path/jenkins/src/CheckoutBranch.groovy"
+
 				checkoutBranch(repositoryUrl, checkoutBranch.handle(params.Release))
 			}
 		}
