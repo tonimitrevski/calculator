@@ -4,3 +4,5 @@ String handle(String param) {
   }
   return 'master'
 }
+
+return this
